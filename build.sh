@@ -3,7 +3,7 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 version=1.0
-echo "creating tool binary version $version"
+echo "creating binary version $version"
 
 mkdir -p ../bin
 build() {

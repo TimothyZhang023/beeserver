@@ -7,7 +7,6 @@ import (
 
 func TestMiPush(t *testing.T) {
 
-
-	mipush.GetFeed()
+	mipush.UpdateFeed()
 
 }

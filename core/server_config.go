@@ -1,4 +1,4 @@
-package server
+package core
 
 import (
 	"github.com/astaxie/beego/config"
@@ -21,16 +21,15 @@ func NewServerConfig(filename string) *ServerConfig {
 		if filename == "" {
 			c, _ = config.NewConfigData("ini", []byte(""))
 		} else {
-			panic("read config file failed " + err.Error())
+			log.Warn("read config file failed " + err.Error())
+			c = config.NewFakeConfig()
 		}
 	}
 
- 	log.SetLevel(log.LevelInfo)
-
-
+	log.SetLevel(log.LevelInfo)
 
 	sc := &ServerConfig{
-		Port:     c.DefaultInt("server::port", 6379),
+		Port:     c.DefaultInt("server::port", 8080),
 		MaxProcs: c.DefaultInt("server::cpus", runtime.NumCPU()),
 		FileName: filename,
 		Config:   c,
